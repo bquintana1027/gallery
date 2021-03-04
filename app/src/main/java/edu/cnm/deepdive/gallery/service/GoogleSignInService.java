@@ -22,13 +22,16 @@ public class GoogleSignInService {
     GoogleSignInOptions options = new GoogleSignInOptions.Builder()
         .requestEmail()
         .requestId()
-//        .requestIdToken(BuildConfig.CLIENT_ID)
         .build();
     client = GoogleSignIn.getClient(context, options);
   }
 
   public static void setContext(Application context) {
     GoogleSignInService.context = context;
+  }
+
+  public static GoogleSignInService getInstance(){
+    return InstanceHolder.INSTANCE;
   }
 
   public GoogleSignInAccount getAccount() {
